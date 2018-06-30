@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Contacts</title>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.js"></script>
+
+  <script src="js/controllers/main.js"></script>
+  <script src="js/services/contacts.js"></script>
+  <script src="js/core.js"></script>
+
+
+</head>
+
+<body ng-app="contacts">
+  <div ng-controller="mainController">
+    <h1>Contacts Viewer</h1>
+    <ul>
+      <li> Create a contact </li>
+      <li> Edit a contact </li>
+      <li> Delete a contact </li>
+    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contacts">
+          <td> {{ $index+1 }} </td>     <td>{{ contact.firstName }}</td>
+          <td> {{ contact.lastName }}</td> <td>{{ contact.email }}</td>
+          <td> {{ contact.phone }}</td>    <td>{{ contact.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
