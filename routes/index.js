@@ -4,6 +4,8 @@ var fs = require("fs");
 var fileIO = require("../modules/dataHandling/FileOperations");
 var contactModel = require("../models/contactModel");
 
+module.exports = router;
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Contacts' });
@@ -21,16 +23,30 @@ router.get('/api/contacts/json', function(req, res) {
     res.end(JSON.stringify(response));
 });
 
-router.post("/api/contacts/create", function(req, res){
-    var contact = contactModel(req.body);
+router.post("/api/contacts/createUpdate", function(req, res){
+    var contact = contactModel.newContact(req.body);
     //TODO: Using Model will ensure we are sending correct data JSON model into our FileSystem
     if(contact !== null){
-        if(fileIO.addContact(contact)){
-            res.end("Added record");
-            return;
-        }
+      if(contact.id === undefined){
+        res.end(addContact(contact));
+      }
+      else{
+        res.end(updateContact(contact));
+      }
     }
-    res.end("Contact not added");
+    res.end("Error in contact details");
 });
 
-module.exports = router;
+var updateContact = function (contact){
+    if(fileIO.updateContact(contact)){
+        return "Contact updated";
+    }
+    return "Error updating contact";
+};
+
+var addContact = function (contact){
+    if(fileIO.addContact(contact)){
+        return "Added contact";
+    }
+    return "Error added contact";
+};
