@@ -15,6 +15,9 @@ angular.module('contactsController', [])
                 populateList();
             });
         };
+        $scope.cancel = function(){
+          showList();
+        };
         var showList = function(){
             $contactForm.addClass("hidden");
             $listView.removeClass("hidden");

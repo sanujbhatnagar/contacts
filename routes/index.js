@@ -1,8 +1,9 @@
 var express = require('express');
-var router = express.Router()
+var router = express.Router();
 var fs = require("fs");
 var fileIO = require("../modules/dataHandling/FileOperations");
 var contactModel = require("../models/contactModel");
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Contacts' });

@@ -44,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="contact in contacts">
+        <tr ng-repeat="contact in contacts" ng-attr-data-id="{{contact.id}}">
           <td> {{ $index+1 }} </td>     <td>{{ contact.firstName }}</td>
           <td> {{ contact.lastName }}</td> <td>{{ contact.email }}</td>
           <td> {{ contact.phone }}</td>    <td>{{ contact.status }}</td>
@@ -70,6 +70,7 @@
       </lablel>
       <lablel>
         <input type="button" name="save" value="Save" ng-click="saveContact()"/>
+        <input type="button" name="cancle" value="Cancel" ng-click="cancel()"/>
       </lablel>
     </div>
   </div>
