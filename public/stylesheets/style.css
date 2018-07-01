@@ -11,6 +11,25 @@ a {
   display: none;
 }
 
-#createContactForm{
+#menuList li a{
+  cursor: pointer;
+}
 
+#menuList li a:hover{
+  cursor: pointer;
+}
+
+#listContactView table{
+  font-size: 0.8rem;
+}
+
+#listContactView table:not(.table-hover) tr.Inactive{
+  background-color: beige;
+}
+#createContactForm{
+  padding: 1em;
+}
+#createContactForm div.form-group input[name='first'], #createContactForm div.form-group input[name='last']{
+  width: 49%;
+  display: inline-block;
 }

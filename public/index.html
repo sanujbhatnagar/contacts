@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Contacts</title>
+  <title>Contacts Manager</title>
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
           crossorigin="anonymous"></script>
+  <!-- Popper JS  Required for Bootstrap 4.0 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.js"></script>
 
@@ -23,18 +28,20 @@
 </head>
 
 <body ng-app="contacts">
-  <div ng-controller="mainController">
-    <h1>Contacts Viewer</h1>
-    <ul id="menuList">
-      <li ng-click="createContact()"> Create a contact </li>
-      <li ng-click="listContacts()"> List contacts </li>
-      <li id = "editMenuButton" ng-click="toggleEdit()"> Edit/Delete a contact </li>
-    </ul>
+  <div ng-controller="mainController" class="container">
+    <h2>Contacts Manager</h2>
+    <nav class="navbar bg-light navbar-expand-sm justify-content-center">
+      <ul id="menuList" class="nav">
+        <li ng-click="createContact()" class="nav-item"> <a class="nav-link" > Create a contact </a> </li>
+        <li ng-click="listContacts()" class="nav-item"> <a class="nav-link" > List contacts </a> </li>
+        <li id = "editMenuButton" ng-click="toggleEdit()" class="nav-item"> <a class="nav-link" > Edit Mode </a></li>
+      </ul>
+    </nav>
     <div id="listContactView">
-      <table>
-        <thead>
+      <table class="table table-bordered">
+        <thead class="thead-light">
         <tr>
-          <th>Sr. No</th>
+          <th>No</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
@@ -43,7 +50,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="contact in contacts" ng-attr-data-id="{{contact.id}}" ng-click="editContact()">
+        <tr ng-repeat="contact in contacts" class="{{ contact.status }}" ng-attr-data-id="{{contact.id}}" ng-click="editContact()">
           <td> {{ $index+1 }} </td>     <td>{{ contact.firstName }}</td>
           <td> {{ contact.lastName }}</td> <td>{{ contact.email }}</td>
           <td> {{ contact.phone }}</td>    <td>{{ contact.status }}</td>
@@ -51,28 +58,30 @@
         </tbody>
       </table>
     </div>
-    <div id="createContactForm" class="hidden">
-      <h1 id="formHeading"> Create Contact </h1>
-        <input type="hidden" id="id" name="id" />
-      <lablel> <span>Name</span>
-        <input type="text" id="first" name="first" placeholder="First"/>
-        <input type="text" id="last" name="last" placeholder="Last"/>
-      </lablel>
-      <lablel> <span>Email</span>
-        <input type="email" id="email" name="email" placeholder="abc@example.com"/>
-      </lablel>
-      <lablel> <span>Phone</span>
-        <input type="tel" id="phone" name="phone" placeholder="+919988822266"/>
-      </lablel>
-      <lablel> <span>Active</span>
-        <label><input type="radio" name="active" value=true /> Yes </label>
-        <label><input type="radio" name="active" value=false /> No </label>
-      </lablel>
-      <lablel>
-        <input type="button" name="save" value="Save" ng-click="saveContact()"/>
-        <input type="button" name="delete" value="Delete" ng-click="confDeleteContact()"/>
-        <input type="button" name="cancle" value="Cancel" ng-click="cancel()"/>
-      </lablel>
+    <div id="createContactForm" class="hidden container">
+      <h5 id="formHeading"> Create Contact </h5>
+      <div class="container">
+        <div class="form-group"> <div>Name</div>
+          <input class="form-control" type="text" id="first" name="first" placeholder="First"/>
+          <input class="form-control" type="text" id="last" name="last" placeholder="Last"/>
+        </div>
+        <div class="form-group"> <label>Email</label>
+          <input class="form-control" type="email" id="email" name="email" placeholder="abc@example.com"/>
+        </div>
+        <div class="form-group"> <label>Phone</label>
+          <input class="form-control" type="tel" id="phone" name="phone" placeholder="+919988822266"/>
+        </div>
+        <div class="form-group"> <label>Active</label>
+          <label><input type="radio" name="active" value=true /> Yes </label>
+          <label><input type="radio" name="active" value=false /> No </label>
+        </div>
+        <div>
+          <input type="hidden" id="id" name="id" />
+          <input type="button" name="save" value="Save" ng-click="saveContact()"/>
+          <!--input type="button" name="delete" value="Delete" ng-click="confDeleteContact()"/-->
+          <input type="button" name="cancle" value="Cancel" ng-click="cancel()"/>
+        </div>
+      </div>
     </div>
   </div>
 </body>

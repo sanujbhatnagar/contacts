@@ -11,10 +11,16 @@ angular.module('contactsController', [])
         $scope.toggleEdit = function (){
             editMode = !editMode;
             if(editMode){
-                angular.element("#editMenuButton").addClass("editModeOn");
+                angular.element("#editMenuButton").addClass("bg-success");
+                $listView.find("table").addClass("table-hover");
+                $listView.find("thead").removeClass("thead-light");
+                $listView.find("thead").addClass("thead-dark");
             }
             else{
-                angular.element("#editMenuButton").removeClass("editModeOn");
+                angular.element("#editMenuButton").removeClass("bg-success");
+                $listView.find("table").removeClass("table-hover");
+                $listView.find("thead").removeClass("thead-dark");
+                $listView.find("thead").addClass("thead-light");
             }
         };
 
