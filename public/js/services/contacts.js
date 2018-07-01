@@ -5,8 +5,8 @@ angular.module('contactsService', [])
             get : function() {
                 return $http.get('/api/contacts/list');
             },
-            create : function(todoData) {
-                return $http.post('/api/contacts/create', todoData);
+            create : function(data) {
+                return $http.post('/api/contacts/create', data);
             },
             delete : function(id) {
                 return $http.delete('/api/contacts/delete' + id);

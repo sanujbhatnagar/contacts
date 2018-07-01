@@ -1,1 +1,1 @@
-angular.module('contacts', ['contactsController', 'contactsService']);
+var contacts = angular.module('contacts', ['ngRoute','contactsController', 'contactsService']);

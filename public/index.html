@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.js"></script>
 
@@ -23,12 +26,14 @@
   <div ng-controller="mainController">
     <h1>Contacts Viewer</h1>
     <ul>
-      <li> Create a contact </li>
+      <li ng-click="createContact()"> Create a contact </li>
+      <li ng-click="listContacts()"> List contacts </li>
       <li> Edit a contact </li>
       <li> Delete a contact </li>
     </ul>
-    <table>
-      <thead>
+    <div id="listContactView">
+      <table>
+        <thead>
         <tr>
           <th>Sr. No</th>
           <th>First Name</th>
@@ -37,17 +42,37 @@
           <th>Phone Number</th>
           <th>Status</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr ng-repeat="contact in contacts">
           <td> {{ $index+1 }} </td>     <td>{{ contact.firstName }}</td>
           <td> {{ contact.lastName }}</td> <td>{{ contact.email }}</td>
           <td> {{ contact.phone }}</td>    <td>{{ contact.status }}</td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
+    <div id="createContactForm" class="hidden">
+      <h1> Create Contact </h1>
+      <lablel> <span>Name</span>
+        <input type="text" id="first" name="first" placeholder="First"/>
+        <input type="text" id="last" name="last" placeholder="Last"/>
+      </lablel>
+      <lablel> <span>Email</span>
+        <input type="email" id="email" name="email" placeholder="abc@example.com"/>
+      </lablel>
+      <lablel> <span>Phone</span>
+        <input type="tel" id="phone" name="phone" placeholder="+919988822266"/>
+      </lablel>
+      <lablel> <span>Active</span>
+        <label><input type="radio" name="active" value=true /> Yes </label>
+        <label><input type="radio" name="active" value=false /> No </label>
+      </lablel>
+      <lablel>
+        <input type="button" name="save" value="Save" ng-click="saveContact()"/>
+      </lablel>
+    </div>
   </div>
-
 </body>
 
 </html>
