@@ -25,11 +25,10 @@
 <body ng-app="contacts">
   <div ng-controller="mainController">
     <h1>Contacts Viewer</h1>
-    <ul>
+    <ul id="menuList">
       <li ng-click="createContact()"> Create a contact </li>
       <li ng-click="listContacts()"> List contacts </li>
-      <li> Edit a contact </li>
-      <li> Delete a contact </li>
+      <li id = "editMenuButton" ng-click="toggleEdit()"> Edit/Delete a contact </li>
     </ul>
     <div id="listContactView">
       <table>
@@ -44,7 +43,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="contact in contacts" ng-attr-data-id="{{contact.id}}">
+        <tr ng-repeat="contact in contacts" ng-attr-data-id="{{contact.id}}" ng-click="editContact()">
           <td> {{ $index+1 }} </td>     <td>{{ contact.firstName }}</td>
           <td> {{ contact.lastName }}</td> <td>{{ contact.email }}</td>
           <td> {{ contact.phone }}</td>    <td>{{ contact.status }}</td>
@@ -53,7 +52,8 @@
       </table>
     </div>
     <div id="createContactForm" class="hidden">
-      <h1> Create Contact </h1>
+      <h1 id="formHeading"> Create Contact </h1>
+        <input type="hidden" id="id" name="id" />
       <lablel> <span>Name</span>
         <input type="text" id="first" name="first" placeholder="First"/>
         <input type="text" id="last" name="last" placeholder="Last"/>
@@ -70,6 +70,7 @@
       </lablel>
       <lablel>
         <input type="button" name="save" value="Save" ng-click="saveContact()"/>
+        <input type="button" name="delete" value="Delete" ng-click="confDeleteContact()"/>
         <input type="button" name="cancle" value="Cancel" ng-click="cancel()"/>
       </lablel>
     </div>
