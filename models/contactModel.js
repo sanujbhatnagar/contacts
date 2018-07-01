@@ -17,7 +17,7 @@ var contactsModel = {
         model[properties[1]] = jsonObj[properties[1]];
         model[properties[2]] = jsonObj[properties[2]];
         model[properties[3]] = jsonObj[properties[3]];
-        model[properties[4]] = jsonObj[properties[4]] == true ? "Active" : "Inactive";
+        model[properties[4]] = (jsonObj[properties[4]] == "true") ? "Active" : "Inactive";
 
         return model
     },
