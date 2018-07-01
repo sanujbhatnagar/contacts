@@ -1,14 +1,18 @@
+/*
+  Copy the below data to dataFile.json and set id.txt file with 2.
+*/
 [{
   "id" : 1,
   "firstName" : "Sanuj",
   "lastName" : "Bhatnagar",
-  "phone" : +919966654321,
+  "phone" : '+919966654321',
   "email" : "sb@gmail.com",
   "status" : "Active"
 },{
   "id" : 2,
   "firstName" : "Mukesh",
   "lastName" : "Karlaa",
-  "phone" : +918888555500,
+  "phone" : '+918888555500',
   "email" : "mukeshK@gmail.com",
-  "status" : "Active"}]
+  "status" : "Active"
+}]
