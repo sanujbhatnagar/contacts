@@ -1,0 +1,11 @@
+[{
+  "firstName" : "Sanuj",
+  "lastName" : "Bhatnagar",
+  "phone" : 9876543210,
+  "email" : "sanujb@gmail.com",
+  "status" : "Active"
+},{"firstName" : "Mukesh",
+  "lastName" : "Karlaa",
+  "phone" : 789456258,
+  "email" : "mukeshK@gmail.com",
+  "status" : "Active"}]
