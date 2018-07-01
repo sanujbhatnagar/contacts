@@ -6,6 +6,7 @@ var contactsModel = function(jsonObj){
             return null;
         }
     }
+    model.id = undefined;
     model[properties[0]] = jsonObj[properties[0]];
     model[properties[1]] = jsonObj[properties[1]];
     model[properties[2]] = jsonObj[properties[2]];
